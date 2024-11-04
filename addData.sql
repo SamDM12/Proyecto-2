@@ -94,34 +94,21 @@ delimiter ;
 ALTER TABLE PERSON MODIFY COLUMN IDENTIFICATIONNUMBER INT;
 ALTER TABLE GENDERTYPE MODIFY COLUMN GENDERTYPE VARCHAR(15);
 
-
-
 delimiter $$
-CREATE PROCEDURE addPerson(IN newIdentificationNumber INT, IN newFirstName VARCHAR(15), IN newSecondName VARCHAR(15), IN newFirstLastName VARCHAR(15), IN newSecondLastName VARCHAR(15), IN newBirthDate DATE, IN pic BLOB, IN conutryName VARCHAR(15), IN genderName VARCHAR(15), IN identificationName VARCHAR (15))
-	BEGIN 
-		DECLARE countryID, genderTypeID, identificationTypeID, pictureID INT;
-        SELECT ID_COUNTRY INTO countryID
-        FROM COUNTRY
-        WHERE COUNTRY_NAME = countryName;
-        
-        SELECT ID_GENDERTYPE INTO genderTypeID
-        FROM GENDERTYPE
-        WHERE GENDERTYPE = genderName;
-        
-        SELECT ID_IDENTIFICATIONTYPE INTO identificationTypeID
-        FROM IDENTIFICATIONTYPE
-        WHERE IDENTIFICATIONTYPE = identificationName;
-        
-        SELECT ID_PICTURE INTO pictureID
-        FROM PICTURE
-        WHERE IMAGE = pic;
-        
-        INSERT INTO PERSON (IDENTIFICATIONNUMBER, FIRSTNAME, SECONDNAME, FISTLASTNAME, SECONDLASTNAME, BIRTHDATE, ID_PICTURE, ID_COUNTRY, ID_GENDERTYPE, ID_IDENTIFICATIONTYPE)
-        VALUES (newIdentificationNumber, newFirstName, newSecondName, newFirstLastName, newSecondLastName, newBirthDate, pictureID, countryID, genderTypeID, identificationTypeID);
-    END $$ 
+	CREATE PROCEDURE AddGender(IN newGender VARCHAR(15))
+    BEGIN
+		INSERT INTO GENDERTYPE (GENDERTYPE) values (newGender);
+    END $$
 delimiter ;
+
 */
-
-
+delimiter $$
+	CREATE PROCEDURE getPersonByIdentification(IN identification INT, OUT FIRSTNAMEOUT VARCHAR(25), OUT FIRSTLASTNAMEOUT VARCHAR(25))
+	BEGIN
+		SELECT FIRSTNAME, FIRSTLASTNAME INTO FIRSTNAME, FIRSTLASTNAME
+        FROM PERSON
+        WHERE IDENTIFICATIONNUMBER = identification;
+    END$$
+delimiter ;
 
 
