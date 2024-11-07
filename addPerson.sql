@@ -1,5 +1,5 @@
 USE ParalympicGames;
--- DROP PROCEDURE addPerson;
+ -- DROP PROCEDURE addPerson;
 
 delimiter $$
 CREATE PROCEDURE addPerson(
@@ -30,7 +30,8 @@ BEGIN
     -- Obtener el ID del tipo de género
     SELECT ID_GENDERTYPE INTO genderTypeID
     FROM GENDERTYPE
-    WHERE GENDERTYPE = genderName;
+    WHERE GENDERTYPE = genderName
+	LIMIT 1;
 
     -- Validar si se encontró el tipo de género
     IF genderTypeID IS NULL THEN
@@ -41,7 +42,8 @@ BEGIN
     -- Obtener el ID del tipo de identificación
     SELECT ID_IDENTIFICATIONTYPE INTO identificationTypeID
     FROM IDENTIFICATIONTYPE
-    WHERE IDENTIFICATIONTYPE = identificationName;
+    WHERE IDENTIFICATIONTYPE = identificationName
+    LIMIT 1;
 
     -- Validar si se encontró el tipo de identificación
     IF identificationTypeID IS NULL THEN
