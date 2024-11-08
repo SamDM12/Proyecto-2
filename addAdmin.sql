@@ -1,5 +1,7 @@
+USE ParalympicGames;
+DROP PROCEDURE IF EXISTS addAdmin ;
 delimiter $$
-CREATE PROCEDURE addAdmin(IN identification INT, IN userN VARCHAR(20), IN pass varchar(20))
+CREATE PROCEDURE addAdmin(IN identification INT, IN userN VARCHAR(20), IN pass varchar(200))
 BEGIN
 	DECLARE id INT;
 	SELECT ID_PERSON INTO id
