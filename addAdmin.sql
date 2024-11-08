@@ -1,5 +1,10 @@
 delimiter $$
-CREATE PROCEDURE addAdmin()
+CREATE PROCEDURE addAdmin(IN identification INT, IN userN VARCHAR(20), IN pass varchar(20))
 BEGIN
+	DECLARE id INT;
+	SELECT ID_PERSON INTO id
+    FROM person
+    WHERE IDENTIFICATIONNUMBER = IDENTIFICATION;
+	INSERT INTO ADMINISTRATOR (ID_PERSON, USERNAME, PASSWORD_ADMIN) values (id, userN, pass);
 END $$
 delimiter ;
