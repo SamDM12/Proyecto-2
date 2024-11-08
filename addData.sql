@@ -101,14 +101,14 @@ delimiter $$
     END $$
 delimiter ;
 
+
 */
 delimiter $$
-	CREATE PROCEDURE getPersonByIdentification(IN identification INT, OUT FIRSTNAMEOUT VARCHAR(25), OUT FIRSTLASTNAMEOUT VARCHAR(25))
+	CREATE PROCEDURE getPersonByIdentification(IN identification INT)
 	BEGIN
-		SELECT FIRSTNAME, FIRSTLASTNAME INTO FIRSTNAME, FIRSTLASTNAME
+		SELECT FIRSTNAME, FIRSTLASTNAME
         FROM PERSON
         WHERE IDENTIFICATIONNUMBER = identification;
     END$$
 delimiter ;
-
 
