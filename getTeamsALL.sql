@@ -1,0 +1,10 @@
+USE ParalympicGames;
+-- DROP PROCEDURE getCoaches;
+DELIMITER //
+
+CREATE PROCEDURE getTeamsALL()
+BEGIN
+    SELECT * FROM Team;
+END //
+
+DELIMITER ;

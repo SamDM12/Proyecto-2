@@ -1,0 +1,11 @@
+USE ParalympicGames;
+-- DROP PROCEDURE getCoaches;
+DELIMITER //
+
+CREATE PROCEDURE getCoaches()
+BEGIN
+    SELECT c.ID_COACH, p.FIRSTNAME, p.FIRSTLASTNAME FROM coach c
+    LEFT JOIN Person p ON c.ID_PERSON = p.ID_Person;
+END //
+
+DELIMITER ;
