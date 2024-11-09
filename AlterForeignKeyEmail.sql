@@ -1,0 +1,8 @@
+USE ParalympicGames;
+-- ALTER TABLE Email
+-- DROP FOREIGN KEY ID_Person;
+
+
+ALTER TABLE Email
+ADD CONSTRAINT ID_PersonEmail
+FOREIGN KEY (ID_Person) REFERENCES Person(ID_Person) ON DELETE SET NULL;

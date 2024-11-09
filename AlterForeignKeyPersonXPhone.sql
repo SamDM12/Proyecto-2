@@ -1,0 +1,17 @@
+USE ParalympicGames;
+-- ALTER TABLE Email
+-- DROP FOREIGN KEY ID_Person;
+
+
+ALTER TABLE personxphone
+ADD CONSTRAINT ID_Phone
+FOREIGN KEY (ID_Phone) REFERENCES Phone(ID_Phone) ON DELETE SET NULL;
+
+USE ParalympicGames;
+-- ALTER TABLE Email
+-- DROP FOREIGN KEY ID_Person;
+
+
+ALTER TABLE personxphone
+ADD CONSTRAINT ID_PersonPersonXPhone
+FOREIGN KEY (ID_Person) REFERENCES Person(ID_Person) ON DELETE SET NULL;
