@@ -1,6 +1,6 @@
 USE ParalympicGames;
-DROP TABLE LOG;
 
+-- DROP TABLE LOG;
 CREATE TABLE Log (
     logId INT auto_increment KEY,
     schemaName VARCHAR(50) NOT NULL,
