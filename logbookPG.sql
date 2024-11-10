@@ -1,14 +1,16 @@
 USE ParalympicGames;
+DROP TABLE LOG;
+
 CREATE TABLE Log (
-    logId INT(10) PRIMARY KEY,
-    schemaName VARCHAR(10) UNIQUE NOT NULL,
-    tableName VARCHAR(30) UNIQUE NOT NULL,
-    fieldName VARCHAR(30) UNIQUE NOT NULL,
-    previousValue VARCHAR(100) UNIQUE NOT NULL,
+    logId INT auto_increment KEY,
+    schemaName VARCHAR(50) NOT NULL,
+    tableName VARCHAR(50)  NOT NULL,
+    fieldName VARCHAR(50)  NOT NULL,
+    previousValue VARCHAR(100) NOT NULL,
     currentValue VARCHAR(100)
 );
 
 ALTER TABLE Log
 ADD change_date DATE,
 ADD creation_date DATE,
-ADD creation_user VARCHAR(10);
+ADD creation_user VARCHAR(100);
