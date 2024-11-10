@@ -14,7 +14,7 @@ CREATE PROCEDURE addPerson(
     IN identificationName VARCHAR(15)
 )
 BEGIN 
-    DECLARE countryID, genderTypeID, identificationTypeID, existingPersonID INT;
+    DECLARE countryID, genderTypeID, identificationTypeID, existingPersonID, GENDERID INT;
 
     -- Obtener el ID del país
     SELECT ID_COUNTRY INTO countryID
@@ -34,10 +34,9 @@ BEGIN
 	LIMIT 1;
 
     -- Validar si se encontró el tipo de género
-    IF genderTypeID IS NULL THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Error: No se encontró ningún tipo de género con el nombre especificado.';
-    END IF;
+   SELECT ID_GENDERTYPE INTO GENDERID 
+   FROM GENDERTYPE
+   WHERE GENDERTYPE = genderName;
 
     -- Obtener el ID del tipo de identificación
     SELECT ID_IDENTIFICATIONTYPE INTO identificationTypeID
@@ -69,7 +68,7 @@ BEGIN
     )
     VALUES (
         newIdentificationNumber, newFirstName, newSecondName, newFirstLastName, 
-        newSecondLastName, newBirthDate, countryID, genderTypeID, identificationTypeID
+        newSecondLastName, newBirthDate, countryID, GENDERID, identificationTypeID
     );
 END $$
 delimiter ;
